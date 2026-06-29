@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dakhil '26 Batch Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="jpg" href="logo.jpg">
+</head>
+<body>
+
+  <div class="floating-msg">
+    Can't find yourself here? 
+    <a href="form.html">Fill the form and submit it ➔</a>
+  </div>
+
+  <div class="bg-layer">
+    <div class="bg-gradient"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <main class="page-wrapper">
+    <header class="page-header">
+      <div class="eyebrow">📋 Dakhil '26 Memorial Portal</div>
+      <h1>Student <em>Directory</em></h1>
+      <p>Search by Name, Roll No, or Registration No to find your classmates.</p>
+    </header>
+
+    <div class="search-wrap">
+      <div class="search-box">
+        <select id="searchCategory" style="background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 10px; margin-right: 5px; outline: none; cursor: pointer;">
+          <option value="name" style="background: #1e1b4b; color: #fff;">Name</option>
+          <option value="roll" style="background: #1e1b4b; color: #fff;">Roll</option>
+          <option value="reg" style="background: #1e1b4b; color: #fff;">Reg</option>
+        </select>
+        
+        <input type="text" id="searchInput" placeholder="Enter search term…" autocomplete="off" />
+        <button class="search-btn" onclick="doSearch()">Search</button>
+      </div>
+      <p class="search-stats" id="searchStats"></p>
+    </div>
+
+    <section class="tab-panel active" id="panel-students">
+      <div class="students-grid" id="studentsGrid"></div>
+    </section>
+  </main>
+
+<footer>
+    <div class="footer-content">
+      <p class="dev-tag">© 2026 Dakhil '26 Batch | Designed & Developed by Shafu. Click bellow to contact</p>
+      <div class="footer-links">
+        <a href="mailto:shafayatamin0010@gmail.com" title="Email Me">Email</a>
+        <a href="https://wa.me/8801870746153" target="_blank" title="WhatsApp">WhatsApp</a>
+        <a href="https://t.me/8801870746153" target="_blank" title="Telegram">Telegram</a>
+        <a href="https://www.facebook.com/shafu0010" target="_blank" title="Facebook">Facebook</a>
+      </div>
+    </div>
+  </footer>
+  <script src="data.js"></script>
+  <script>
+function esc(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+    function hl(text, q) {
+      if (!q) return text;
+      return text.replace(new RegExp(`(${esc(q)})`, 'gi'), '<mark>$1</mark>');
+    }
+
+    function buildStudentCard(s, q = '') {
+      const gpaDisplay = (s.gpa && s.gpa !== "N/A") ? `<span class="badge-gpa">GPA: ${s.gpa}</span>` : '';
+      
+      return `
+        <article class="student-card">
+          <div class="top-bar"></div>
+          <div class="card-avatar-wrap">
+            <img class="card-avatar" src="${s.photo}" alt="${s.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/90/1e1b4b/ffffff?text=User'"/>
+          </div>
+          <div class="card-body">
+            <div class="card-name">${hl(s.name, q)}</div>
+            <div class="card-meta">
+              <span class="badge-roll">Roll: ${hl(s.roll, q)}</span>
+              <span class="badge-reg">Reg: ${hl(s.reg, q)}</span>
+              <span class="badge-group">${s.section}</span>
+              <span class="badge-blood">Blood: ${s.blood}</span>
+              ${gpaDisplay}
+            </div>
+            <div class="card-contact">
+              <p>📞 ${s.phone}</p>
+              <p>📧 ${s.email}</p>
+            </div>
+            <a href="${s.fbProfile}" target="_blank" rel="noopener" class="btn-fb">Facebook Profile</a>
+          </div>
+        </article>`;
+    }
+
+    function emptyHTML(q) {
+      return `<div style="grid-column:1/-1; text-align:center; padding:40px; color:rgba(255,255,255,0.5);">
+        <h3>No Student Found</h3>
+        <p>No results match "${q}".</p>
+      </div>`;
+    }
+
+    function renderStudents(list, q = '') {
+      const grid = document.getElementById('studentsGrid');
+      grid.innerHTML = list.length ? list.map(s => buildStudentCard(s, q)).join('') : emptyHTML(q);
+      updateStats(list.length, studentsData.length, q);
+    }
+
+    function updateStats(found, total, q) {
+      const el = document.getElementById('searchStats');
+      el.innerHTML = q
+        ? `Found <strong>${found}</strong> results out of <strong>${total}</strong> students`
+        : `Total <strong>${total}</strong> students registered`;
+    }
+
+    // --- Unified Search & Filter Logic ---
+    const searchInput = document.getElementById('searchInput');
+    const catSelect = document.getElementById('searchCategory');
+
+    searchInput.addEventListener('input', function(e) {
+      const category = catSelect.value;
+      
+      if (category === 'roll' || category === 'reg') {
+        // Enforce Limits
+        const limit = category === 'roll' ? 6 : 10;
+        
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/g, '');
+        
+        if (value.length > limit) {
+            value = value.substring(0, limit);
+        }
+        
+        // Apply auto-spacing
+        e.target.value = value.match(/.{1,2}/g)?.join(' ') || '';
+      }
+      
+      filterData();
+    });
+
+    catSelect.addEventListener('change', function() {
+      // Clear the search bar if they switch categories (e.g., from Name to Roll)
+      searchInput.value = '';
+      filterData();
+    });
+
+    function filterData() {
+      const q = searchInput.value.toLowerCase();
+      const cat = catSelect.value;
+      
+      const res = !q ? studentsData : studentsData.filter(s => {
+        if (cat === 'name') return s.name.toLowerCase().includes(q);
+        // Strip spaces from the stored data and query before comparing for strict matching
+        if (cat === 'roll') return s.roll.replace(/\s/g, '').includes(q.replace(/\s/g, ''));
+        if (cat === 'reg') return s.reg.replace(/\s/g, '').includes(q.replace(/\s/g, ''));
+        return false;
+      });
+      
+      renderStudents(res, q);
+    }
+
+    function doSearch() {
+      filterData();
+    }
+
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    // Initial render when the page loads
+    renderStudents(studentsData);
+  </script>
+</body>
+</html>

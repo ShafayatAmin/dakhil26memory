@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dakhil '26 - Registration</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="jpg" href="logo.jpg">
+  
+  <style>
+    /* Ensuring the submit button looks interactive */
+    .submit-btn {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: var(--r-md);
+      font-weight: 700;
+    }
+    .submit-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+    }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* Gen-Z Vibe Toast Notification */
+    .vibe-toast {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      background: linear-gradient(135deg, #ff007f, #7000ff);
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 10px 30px rgba(255, 0, 127, 0.6);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy effect */
+      z-index: 9999;
+      text-align: center;
+      border: 2px solid #00ffff;
+      pointer-events: none;
+    }
+    .vibe-toast.show {
+      bottom: 40px;
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    /* Toast Layout Updates */
+.vibe-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+#toast-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+#toast-close:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+    /* GPA Timer Styling */
+    .gpa-timer {
+      font-size: 0.75rem;
+      color: var(--accent-light);
+      background: rgba(6, 182, 212, 0.1);
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-top: 8px;
+      display: inline-block;
+      font-weight: 600;
+      border: 1px dashed var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-layer">
+    <div class="bg-gradient"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <div id="toast-box" class="vibe-toast">
+    <span id="toast-msg"></span>
+    <button id="toast-close" onclick="hideToast()">✕</button>
+  </div>
+
+  <main class="page-wrapper">
+    <header class="page-header">
+      <h1>Student <em>Registration</em></h1>
+    </header>
+
+    <form class="form-container" id="registrationForm">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="f-name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Dakhil Board Roll No (6 Digits)</label>
+        <input type="text" id="f-roll" placeholder="12 34 56" required>
+      </div>
+
+      <div class="form-group">
+        <label>Dakhil Registration No (10 Digits)</label>
+        <input type="text" id="f-reg" placeholder="23 ** ** ** **" required>
+      </div>
+
+      <div class="form-group">
+        <label>Section</label>
+        <select id="f-section" required>
+          <option value="Science">Science</option>
+          <option value="General">General</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Blood Group</label>
+        <select id="f-blood">
+          <option value="Not Specified">Not Specified</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Board Result (GPA)</label>
+        <input type="number" step="0.01" id="f-gpa" placeholder="0.00">
+        <div id="gpa-countdown" class="gpa-timer">⏳ Loading timer...</div>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <div class="phone-input">
+          <span class="phone-prefix">+88</span>
+          <input type="tel" id="f-phone" maxlength="11" placeholder="01XXXXXXXXX" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address (Optional)</label>
+        <input type="email" id="f-email">
+      </div>
+
+      <div class="form-group">
+        <label>Facebook Profile Link</label>
+        <input type="url" id="f-fb" placeholder="Need this for your picture!">
+      </div>
+
+      <button type="submit" class="submit-btn">SUBMIT TO WHATSAPP</button>
+      
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Directory</a>
+      </div>
+    </form>
+  </main>
+  
+  <footer>
+    <div class="footer-content">
+      <p class="dev-tag">© 2026 Dakhil '26 Batch | Designed & Developed by Shafu. Click below to contact</p>
+      <div class="footer-links">
+        <a href="mailto:shafayatamin0010@gmail.com" title="Email Me">Email</a>
+        <a href="https://wa.me/8801870746153" target="_blank" title="WhatsApp">WhatsApp</a>
+        <a href="https://t.me/8801870746153" target="_blank" title="Telegram">Telegram</a>
+        <a href="https://www.facebook.com/shafu0010" target="_blank" title="Facebook">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+// Vibe Toast Functionality
+let toastTimeout;
+const toastBox = document.getElementById('toast-box');
+const toastMsg = document.getElementById('toast-msg');
+const gpaInput = document.getElementById('f-gpa');
+
+function showToast(msg, autoHide = true) {
+  toastMsg.innerText = msg;
+  toastBox.classList.add('show');
+  clearTimeout(toastTimeout);
+  if (autoHide) {
+    toastTimeout = setTimeout(hideToast, 3500);
+  }
+}
+
+function hideToast() {
+  toastBox.classList.remove('show');
+}
+
+// Click Outside Detector
+document.addEventListener('click', function(e) {
+  if (toastBox.classList.contains('show') && !toastBox.contains(e.target) && e.target !== gpaInput) {
+    hideToast();
+  }
+});
+
+// GPA Focus Warning: Only shows if the field is locked
+gpaInput.addEventListener('focus', function() {
+  if (this.hasAttribute('readonly')) {
+    showToast("কিরে শালা, রেজাল্ট দিসে এহনও? কি করস এহানে?? শাফু সব বুঝে মামা। Lol", false);
+  }
+});
+
+// Countdown Timer & GPA Unlock Logic
+const resultDate = new Date("July 20, 2026 00:00:00").getTime();
+const timerEl = document.getElementById('gpa-countdown');
+
+// Set initial state
+gpaInput.setAttribute('readonly', true);
+
+const timerInterval = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = resultDate - now;
+
+  if (distance < 0) {
+    timerEl.innerHTML = "🎉 Results are officially OUT!";
+    gpaInput.removeAttribute('readonly');
+    gpaInput.placeholder = "Enter your GPA";
+    clearInterval(timerInterval);
+    return;
+  }
+
+  const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((distance % (1000 * 60)) / 1000);
+  timerEl.innerHTML = `⏳ Time till result: ${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+
+// Input Handler for Roll (6) and Reg (10)
+function handleInput(e, limit) {
+  let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/g, '');
+
+  // Registration Prefix Logic (Must start with 23)
+  if (e.target.id === 'f-reg') {
+    if (value.length >= 1 && value[0] !== '2') value = '2' + value.substring(1);
+    if (value.length >= 2 && value.substring(0, 2) !== '23') value = '23' + value.substring(2);
+  }
+
+  if (value.length > limit) value = value.substring(0, limit);
+  e.target.value = value.match(/.{1,2}/g)?.join(' ') || '';
+}
+
+document.getElementById('f-roll').addEventListener('input', (e) => handleInput(e, 6));
+document.getElementById('f-reg').addEventListener('input', (e) => handleInput(e, 10));
+
+// Form submit handler
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Collect data exactly as you had it
+  const name = document.getElementById('f-name').value.trim();
+  const roll = document.getElementById('f-roll').value.trim();
+  const reg = document.getElementById('f-reg').value.trim();
+  const section = document.getElementById('f-section').value.trim();
+  const blood = document.getElementById('f-blood').value.trim();
+  const gpa = gpaInput.value.trim() || "N/A";
+  const phone = "+88" + document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim() || "Not provided";
+  const fb = document.getElementById('f-fb').value.trim();
+
+  // Validation
+  if (!fb) {
+    showToast("Bro, Facebook আইডি না দিলে সাইটে পিক আসবে না। 🤡 Lol", true);
+    return;
+  }
+  
+  const rawReg = reg.replace(/\s+/g, '');
+  if (rawReg.length !== 10) {
+    showToast("Bro, Registration number 10 digits hobe!", true);
+    return;
+  }
+
+  // Final formatted JS object string (Matches your original format)
+  const formattedData = `{
+  name: "${name}",
+  roll: "${roll}",
+  reg: "${reg}",
+  section: "${section}",
+  blood: "${blood}",
+  gpa: "${gpa}",
+  phone: "${phone}",
+  email: "${email}",
+  photo: "{You dont need to put it}",
+  fbProfile: "${fb}"
+},`;
+
+  // WhatsApp message
+  const message = `Hello Breh! Shafu always watching\n\n${formattedData}`;
+  const url = `https://wa.me/8801870746153?text=${encodeURIComponent(message)}`;
+
+  window.open(url, '_blank');
+  document.getElementById('registrationForm').reset();
+});
+</script>
+</body>
+</html>
