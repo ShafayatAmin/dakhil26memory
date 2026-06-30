@@ -581,14 +581,14 @@ const studentsData = [
 {
   name: "Md Rafat",
   roll: "10 03 77",
-  reg: "23 18 99 62 13",
+  reg: "23 18 99 63 13",
   section: "General",
   blood: "B+",
   gpa: "N/A",
   phone: "+8801715111522",
   email: "Not provided",
-  photo: "https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/480774798_912949017582936_3627849780999871236_n.jpg?stp=dst-jpg_tt6&cstp=mx947x960&ctp=s947x960&_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFH0xzAJvdB_VU54ttW8TFvfvE9gy9ECTp-8T2DL0QJOsZA_QfbGROLjl3b-frXBKTiKrmbjVFRnwsDhEBz61oy&_nc_ohc=LqGMa4JWWCQQ7kNvwFapaZr&_nc_oc=Adoja-0p0Jn-xMVyP_XEpFZX5seOdi_60RwuTxSo8KrH5DaMmKxVXQVz9VivU12atDk&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=PaeOQ1xBjMiyW8d5BaHxVg&_nc_ss=7b2a8&oh=00_Af-F34bQC25UYK-w2sCDB6DxI3JBKKIaBdXma9gK3108Ow&oe=6A486306",
-  fbProfile: "https://www.facebook.com/share/14hY39acywq/"
+  photo: "https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/480774798_912949017582936_3627849780999871236_n.jpg?stp=dst-jpg_tt6&cstp=mx947x960&ctp=s947x960&_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFH0xzAJvdB_VU54ttW8TFvfvE9gy9ECTp-8T2DL0QJOsZA_QfbGROLjl3b-frXBKTiKrmbjVFRnwsDhEBz61oy&_nc_ohc=LqGMa4JWWCQQ7kNvwFapaZr&_nc_oc=Adoja-0p0Jn-xMVyP_XEpFZX5seOdi_60RwuTxSo8KrH5DaMmKxVXQVz9VivU12atDk&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=nk6CYIGRZypstNre97y6fg&_nc_ss=7b2a8&oh=00_AQCLBDXN9MrgUI_NperQ_0dfD9sNIHMrKr5pQqOfkxA9Cw&oe=6A490BC6",
+  fbProfile: "https://www.facebook.com/share/1JhSkEdimw/"
 },
 {
   name: "IBRAHIM KHAN",
@@ -602,5 +602,30 @@ const studentsData = [
   photo: "https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/469298035_122221809920026507_5365908652498720147_n.jpg?stp=dst-jpg_tt6&cstp=mx736x692&ctp=s736x692&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH0_uJYCuvYKTlRtGjKJ-ZmfKU8CdwoRGh8pTwJ3ChEaC_4BYEw0xkQLkWGmjA20iw-7OtW_spxMEAylz9hLySf&_nc_ohc=XLdPUqyPvjEQ7kNvwGWRCqJ&_nc_oc=Adq585QmO16QZeCJQYKfPgbI7YOQltxZ45DUao3zrpLFaQU9zt6a-nS5BOYFUmWBjrg&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=49NXeVluTbU_iDb3l4MN3A&_nc_ss=7b2a8&oh=00_Af8mQn-h847Yws1SuA0lExTOvXD8IPqAfFataTgtbJXK5Q&oe=6A487537",
   fbProfile: "https://www.facebook.com/ibrahim.khan.131244"
 },
+{
+  name: "Hasanul Banna",
+  roll: "10 04 79",
+  reg: "23 18 95 41 85",
+  section: "General",
+  blood: "A+",
+  gpa: "N/A",
+  phone: "+881962360842",
+  email: "hbanna744@gmail.com",
+  photo: "https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/731158481_122358506786017042_2487960430743311455_n.jpg?stp=dst-jpg_tt6&cstp=mx1120x1120&ctp=s1120x1120&_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFdD4fOPe41oy01O5GLOBKmFG4h9czuF9sUbiH1zO4X20FCA1kGhV0S1z2VQD6QcAm0dwXzgJ42jOQOK6ZLbqHf&_nc_ohc=soEGzP0KjQkQ7kNvwGxFdDA&_nc_oc=AdoobIeM8B3K8bDkmf0IWyBYoEJLdof0sa3FrxO47DrU-r__0UwF3DJxIx0CO2mp5cg&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=PDe7U41Ntj9-75lx5i_wiA&_nc_ss=7b2a8&oh=00_AQDK0G16oVJw_TkH2dloqB349tUmbZCtABVJpe5uh4cM0g&oe=6A48F997",
+  fbProfile: "https://www.facebook.com/share/18uvx8sHJ7/"
+},
+{
+  name: "Yasin Omar Fahim",
+  roll: "40 01 37",
+  reg: "23 18 99 63 72",
+  section: "Science",
+  blood: "B+",
+  gpa: "N/A",
+  phone: "+8801815419738",
+  email: "yofahimf@gmail.com",
+  photo: "https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/712744759_892583113925940_923526740107030106_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGN59SNrnuxjKcD_9iVOuqpi52tgxpxEYOLna2DGnERg5C9rW5iezI1WCFywJAB0eqccYJAgfsN8Ol0LGRBJ0wR&_nc_ohc=q5uFMDZVgvcQ7kNvwEWkipA&_nc_oc=AdogEF8eO14q1wBiFRFrMLfOu56FJ7ASnbhlvWYmE-NxLeR5OG8pfuWHNqKoYbrBnxs&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=Cl7aQfvzFTRN1NL_02NuSg&_nc_ss=7b2a8&oh=00_AQCI6vEQGb9vPIS3crLcIMUMNoVng9vx79PIyTopSWj50A&oe=6A4902E8",
+  fbProfile: "https://www.facebook.com/share/18tzJEatCp/"
+},
+
   
 ];
